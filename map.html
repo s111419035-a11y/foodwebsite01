@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>美食地圖｜北教大美食地圖</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap">
+<link rel="icon" type="image/svg+xml" href="images/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M7 3v6M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2.2 1.4-3 4-3 7h3v11"/></symbol>
+    <symbol id="i-drink" viewBox="0 0 24 24"><path d="M5 8h14M6 8l1.3 12.2a1 1 0 0 0 1 .8h7.4a1 1 0 0 0 1-.8L18 8M12 8l1.5-5H17"/></symbol>
+    <symbol id="i-snack" viewBox="0 0 24 24"><path d="M7.5 11.5a4.5 4.5 0 1 1 9 0zM8 12l4 9.5 4-9.5"/></symbol>
+  </defs>
+</svg>
+<header class="topnav"><div class="wrap"><a class="brand" href="index.html"><img src="images/logo.svg" alt="" width="28" height="28">北教大美食地圖</a><nav aria-label="主選單"><a href="index.html">首頁</a><a href="map.html" aria-current="page">美食地圖</a><a href="oracle.html">今日吃什麼</a><a href="rank.html">人氣榜與回饋</a></nav></div></header>
+<div class="band yellow hero mini"><div class="wrap"><h1>美食地圖</h1><p class="sub">點圖標看簡介，縮小時會自動合併成泡泡。</p><p class="status" id="status" aria-live="polite"></p></div></div>
+<div class="band" id="mapsec">
+  <div class="wrap">
+    <h2 class="sec">逛逛北教大<em>美食地圖</em></h2>
+    <div class="tools">
+    <div class="search">
+      <label class="sr" for="q">搜尋店名或餐點</label>
+      <input id="q" type="search" placeholder="搜尋店名或餐點，例如：麵、豆花、咖啡" autocomplete="off">
+    </div>
+    <div class="row">
+      <span class="gl">區域</span>
+      <div class="seg" id="zones" role="group" aria-label="區域">
+        <button class="chip plain" data-zone="all" aria-pressed="true">全部 <span class="n"></span></button>
+        <button class="chip plain" data-zone="118" aria-pressed="false">118巷 <span class="n"></span></button>
+        <button class="chip plain" data-zone="across" aria-pressed="false">學校對面 <span class="n"></span></button>
+        <button class="chip plain" data-zone="campus" aria-pressed="false">學餐 <span class="n"></span></button>
+        <button class="chip plain" data-zone="mrt" aria-pressed="false">科技大樓站周邊 <span class="n"></span></button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="gl">類別</span>
+      <div class="seg" id="cats" role="group" aria-label="類別">
+        <button class="chip plain" data-cat="all" aria-pressed="true">全部 <span class="n"></span></button>
+        <button class="chip c-food" data-cat="food" aria-pressed="false"><span class="mk"><svg class="ico" viewBox="0 0 24 24"><use href="#i-food"/></svg></span>餐廳 <span class="n"></span></button>
+        <button class="chip c-drink" data-cat="drink" aria-pressed="false"><span class="mk"><svg class="ico" viewBox="0 0 24 24"><use href="#i-drink"/></svg></span>飲料 <span class="n"></span></button>
+        <button class="chip c-snack" data-cat="snack" aria-pressed="false"><span class="mk"><svg class="ico" viewBox="0 0 24 24"><use href="#i-snack"/></svg></span>甜點小吃 <span class="n"></span></button>
+      </div>
+    </div>
+  </div>
+    <div class="main">
+    <div class="mapwrap">
+      <svg id="map" viewBox="80 -680 1760 1900" preserveAspectRatio="xMidYMid meet" role="group" aria-label="北教大周邊美食街道地圖">
+        <rect class="land" x="-2000" y="-2000" width="6000" height="6000"/>
+        <g class="blocks">
+          <rect x="165" y="170" width="428" height="1100"/>
+          <rect x="618" y="262" width="96" height="1000"/>
+          <rect x="786" y="290" width="88" height="930"/>
+          <rect x="790" y="-720" width="1210" height="930"/>
+          <rect x="170" y="-720" width="540" height="920"/>
+          <rect x="1592" y="300" width="270" height="950"/>
+          <rect x="1890" y="300" width="200" height="950"/>
+        </g>
+        <rect class="campus" x="895" y="300" width="670" height="710" rx="10"/>
+        <g class="green">
+          <polygon points="975,585 1268,612 1258,765 1135,765 1108,918 960,908"/>
+          <rect x="455" y="575" width="140" height="100" rx="4"/>
+          <rect x="30" y="735" width="130" height="195" rx="4"/>
+        </g>
+        <g class="bldg">
+          <rect x="330" y="240" width="225" height="75" rx="4"/>
+          <rect x="985" y="300" width="130" height="45" rx="4"/>
+          <rect x="1062" y="425" width="133" height="165" rx="4"/>
+          <rect x="1230" y="430" width="84" height="160" rx="4"/>
+          <rect x="1335" y="425" width="170" height="65" rx="4"/>
+          <rect x="1335" y="500" width="170" height="55" rx="4"/>
+          <rect x="905" y="595" width="70" height="95" rx="4"/>
+          <rect x="905" y="740" width="60" height="70" rx="4"/>
+          <rect x="1030" y="940" width="150" height="50" rx="4"/>
+          <rect x="1140" y="775" width="115" height="140" rx="4"/>
+          <rect x="1310" y="790" width="230" height="100" rx="4"/>
+        </g>
+        <g id="casings"></g>
+        <g id="fills"></g>
+        <path class="mrt" d="M755 -720 L755 150 Q757 215 820 232 L1100 255 L1470 286 L2000 312"/>
+
+        <g>
+          <text class="st big" transform="translate(240 142) rotate(11)">和平東路二段</text>
+          <text class="st big" transform="translate(1280 286) rotate(4.6)">和平東路二段</text>
+          <text class="st big" transform="translate(1720 313) rotate(4.6)">和平東路二段</text>
+          <text class="st" transform="translate(752 470) rotate(-90)">復興南路二段</text>
+          <text class="st" transform="translate(752 900) rotate(-90)">復興南路二段</text>
+          <text class="st" transform="translate(1572 380) rotate(-90)">臥龍街</text>
+          <text class="st" transform="translate(1203 90) rotate(-90)">和平東路二段311巷</text>
+          <text class="st" transform="translate(872 -60) rotate(-90)">和平東路二段265巷</text>
+          <text class="st ln" transform="translate(965 -565)">復興南路二段193巷</text>
+          <text class="st ln" transform="translate(965 -520)">311巷34弄</text>
+          <text class="st ln" transform="translate(1262 -490)">311巷43弄</text>
+          <text class="st ln" transform="translate(1300 -200)">311巷25弄</text>
+          <text class="st" transform="translate(1790 457)">敦化南路二段</text>
+          <text class="st" transform="translate(1690 550)">臥龍街23巷</text>
+          <text class="st" transform="translate(1690 660)">臥龍街31巷</text>
+          <text class="st" transform="translate(340 1182)">辛亥路二段</text>
+          <text class="st" transform="translate(205 330) rotate(-90)">和平東路二段96巷</text>
+          <text class="st ln" transform="translate(215 314) rotate(7.4)">和平東路二段118巷2弄</text>
+          <text class="st ln" transform="translate(215 437) rotate(7.4)">和平東路二段118巷4弄</text>
+          <text class="st ln" transform="translate(215 534) rotate(7.2)">和平東路二段118巷6弄</text>
+          <text class="st ln" transform="translate(215 635) rotate(4.7)">和平東路二段96巷15弄</text>
+          <text class="st ln" transform="translate(215 747) rotate(1.7)">和平東路二段96巷17弄</text>
+          <text class="st ln" transform="translate(215 855)">復興南路二段340巷</text>
+          <text class="st ln" transform="translate(215 943) rotate(2.8)">和平東路二段118巷52弄</text>
+          <text class="st ln" transform="translate(215 1048) rotate(3.1)">和平東路二段118巷54弄</text>
+          <text class="poi" x="443" y="283">科技大樓</text>
+          <text class="poi" x="1050" y="336">北師美術館</text>
+          <text class="poi" x="1128" y="515">行政大樓</text>
+          <text class="poi" x="1420" y="466">至善樓</text>
+          <text class="poi" x="1420" y="535">學生宿舍一宿</text>
+          <text class="poi" x="940" y="650">大禮堂</text>
+          <text class="poi" x="935" y="780">創意館</text>
+          <text class="poi" x="1103" y="972">明德樓</text>
+          <text class="poi" x="1110" y="700">田徑場</text>
+          <text class="sname" x="1300" y="372">國立臺北教育大學</text>
+        </g>
+        <g class="badge" transform="translate(600 262)"><rect x="-60" y="-20" width="120" height="40" rx="20"/><text y="8">118巷</text></g>
+        <g class="badge" transform="translate(1195 -610)"><rect x="-115" y="-20" width="230" height="40" rx="20"/><text y="8">311巷・學校對面</text></g>
+        <g class="badge" transform="translate(1432 592)"><rect x="-60" y="-20" width="120" height="40" rx="20"/><text y="8">學餐</text></g>
+        <g class="badge" transform="translate(1740 900)"><rect x="-80" y="-20" width="160" height="40" rx="20"/><text y="8">學校右邊</text></g>
+
+        <g id="pins"></g><g id="clusters"></g><g id="hov"></g>
+      </svg>
+      <div class="peek" id="peek" hidden>
+        <span id="peek-ico"></span>
+        <div class="nm"><b id="peek-name"></b><small id="peek-meta"></small></div>
+        <button class="btn" id="peek-go" type="button">詳細資訊</button>
+      </div>
+      <div class="maptoast" id="maptoast" aria-hidden="true"><span></span></div>
+      <p class="hint">依 Google 地圖街道繪製的示意圖，店家位置為大略位置。電腦：拖曳移動，滾輪縮放。手機：兩指移動與縮放。</p>
+      <div class="zoom">
+        <button id="zin" aria-label="放大">+</button>
+        <button id="zout" aria-label="縮小">−</button>
+        <button id="zfit" aria-label="顯示全部範圍">全圖</button>
+      </div>
+    </div>
+
+    <aside class="side">
+      <section class="card" id="detail-card" aria-live="polite"><div id="detail"></div></section>
+      <div class="list" id="list"></div>
+    </aside>
+  </div>
+  </div>
+</div>
+
+<footer class="band foot">
+  <div class="wrap">
+    <h2 class="sec">逛完記得<em>回來</em>看看！</h2>
+    <div class="foot-grid">
+      <div><h3>地點</h3><p>國立臺北教育大學<br>台北市大安區和平東路二段134號</p></div>
+      <div><h3>關於這張地圖</h3><p>街道依 Google 地圖繪製，店家位置為大略位置。</p></div>
+      <div><h3>資料提醒</h3><p>價位、營業時間可能變動，出門前請再用 Google 地圖確認。</p></div>
+    </div>
+  </div>
+</footer>
+<script src="js/common.js"></script>
+<script src="js/data.js"></script>
+<script src="js/map.js"></script>
+<script src="js/anim.js"></script>
+</body>
+</html>

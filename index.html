@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>北教大美食地圖</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap">
+<link rel="icon" type="image/svg+xml" href="images/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M7 3v6M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2.2 1.4-3 4-3 7h3v11"/></symbol>
+    <symbol id="i-drink" viewBox="0 0 24 24"><path d="M5 8h14M6 8l1.3 12.2a1 1 0 0 0 1 .8h7.4a1 1 0 0 0 1-.8L18 8M12 8l1.5-5H17"/></symbol>
+    <symbol id="i-snack" viewBox="0 0 24 24"><path d="M7.5 11.5a4.5 4.5 0 1 1 9 0zM8 12l4 9.5 4-9.5"/></symbol>
+  </defs>
+</svg>
+<header class="topnav"><div class="wrap"><a class="brand" href="index.html"><img src="images/logo.svg" alt="" width="28" height="28">北教大美食地圖</a><nav aria-label="主選單"><a href="index.html" aria-current="page">首頁</a><a href="map.html">美食地圖</a><a href="oracle.html">今日吃什麼</a><a href="rank.html">人氣榜與回饋</a></nav></div></header>
+<div class="band yellow hero">
+  <div class="wrap">
+    <h1>北教大美食地圖</h1>
+    <p class="sub">118巷、學校對面、學餐與科技大樓站周邊，<br class="br">餐廳、飲料、甜點小吃一張圖看完。</p>
+    <nav class="pills" aria-label="快速前往">
+      <a class="pill" href="map.html">看美食地圖</a>
+      <a class="pill" href="oracle.html">今天吃什麼</a>
+      <a class="pill" href="rank.html">本週人氣榜</a>
+    </nav>
+    <ol class="steps">
+      <li><span class="num">1</span><b>選區域與類別</b><small>在地圖頁用按鈕或搜尋框，只留下想看的店。</small></li>
+      <li><span class="num">2</span><b>點圖標看簡介</b><small>價位、評分、營業時間與地址一次看完。</small></li>
+      <li><span class="num">3</span><b>不知道吃什麼？</b><small>叫天使豬和惡魔豬吵到打起來，聖廚豬會端出答案。</small></li>
+    </ol>
+  </div>
+</div>
+
+<div class="band" id="features">
+  <div class="wrap">
+    <h2 class="sec">三個頁面，<em>三種逛法</em></h2>
+    <div class="cards3">
+      <a class="fcard" href="map.html"><span class="fno">1</span><b>美食地圖</b><small>依 Google 地圖街道繪製的示意圖，可縮放、拖曳、篩選，點圖標就有店家簡介。</small><span class="go">前往 →</span></a>
+      <a class="fcard" href="oracle.html"><span class="fno">2</span><b>今日吃什麼</b><small>選好區域和想吃的類型，天使豬與惡魔豬吵一架，聖廚豬幫你決定。</small><span class="go">前往 →</span></a>
+      <a class="fcard" href="rank.html"><span class="fno">3</span><b>人氣榜與回饋</b><small>正餐、飲料、點心三個每週榜單，還能回報資料錯誤、推薦新店。</small><span class="go">前往 →</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="band yellow" id="hot">
+  <div class="wrap">
+    <h2 class="sec">本週<em>最高票</em></h2>
+    <ul class="hot3" id="hot3" aria-live="polite">
+      <li><span class="hk">正餐</span><b id="hot-food">尚無投票</b></li>
+      <li><span class="hk">飲料</span><b id="hot-drink">尚無投票</b></li>
+      <li><span class="hk">點心</span><b id="hot-snack">尚無投票</b></li>
+    </ul>
+    <p class="hotlink"><a class="pill" href="rank.html">去投票、看完整榜單</a></p>
+  </div>
+</div>
+
+<footer class="band foot">
+  <div class="wrap">
+    <h2 class="sec">逛完記得<em>回來</em>看看！</h2>
+    <div class="foot-grid">
+      <div><h3>地點</h3><p>國立臺北教育大學<br>台北市大安區和平東路二段134號</p></div>
+      <div><h3>關於這張地圖</h3><p>街道依 Google 地圖繪製，店家位置為大略位置。</p></div>
+      <div><h3>資料提醒</h3><p>價位、營業時間可能變動，出門前請再用 Google 地圖確認。</p></div>
+    </div>
+  </div>
+</footer>
+<script src="js/common.js"></script>
+<script src="js/data.js"></script>
+<script src="js/backend.js"></script>
+<script src="js/home.js"></script>
+<script src="js/anim.js"></script>
+</body>
+</html>

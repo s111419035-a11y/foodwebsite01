@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>人氣榜與回饋｜北教大美食地圖</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap">
+<link rel="icon" type="image/svg+xml" href="images/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M7 3v6M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2.2 1.4-3 4-3 7h3v11"/></symbol>
+    <symbol id="i-drink" viewBox="0 0 24 24"><path d="M5 8h14M6 8l1.3 12.2a1 1 0 0 0 1 .8h7.4a1 1 0 0 0 1-.8L18 8M12 8l1.5-5H17"/></symbol>
+    <symbol id="i-snack" viewBox="0 0 24 24"><path d="M7.5 11.5a4.5 4.5 0 1 1 9 0zM8 12l4 9.5 4-9.5"/></symbol>
+  </defs>
+</svg>
+<header class="topnav"><div class="wrap"><a class="brand" href="index.html"><img src="images/logo.svg" alt="" width="28" height="28">北教大美食地圖</a><nav aria-label="主選單"><a href="index.html">首頁</a><a href="map.html">美食地圖</a><a href="oracle.html">今日吃什麼</a><a href="rank.html" aria-current="page">人氣榜與回饋</a></nav></div></header>
+<div class="band" id="rank">
+  <div class="wrap">
+    <h2 class="sec">本週<em>人氣榜</em></h2>
+    <p class="fb-lead">正餐、飲料、點心三個榜，每人每週各可投一票給最愛的店，每週一零點重新計算。<span id="rk-week"></span></p>
+    <div class="rk-tabs" id="rk-tabs" role="group" aria-label="榜單類別"><button type="button" class="chip" data-c="food" aria-pressed="true">正餐榜</button><button type="button" class="chip" data-c="drink" aria-pressed="false">飲料榜</button><button type="button" class="chip" data-c="snack" aria-pressed="false">點心榜</button></div>
+    <ol class="podium" id="podium" aria-live="polite"></ol>
+    <div class="rk-vote">
+      <label for="rk-shop">我要投給</label>
+      <input id="rk-shop" class="cbi" autocomplete="off" placeholder="輸入或選擇店名" maxlength="60">
+      <button class="btn" id="rk-go" type="button">投下這一票</button>
+      <span id="rk-msg" role="status" aria-live="polite"></span>
+    </div>
+    <div class="rk-last" id="rk-last"></div>
+  </div>
+</div>
+
+<div class="band" id="feedback">
+  <div class="wrap">
+    <h2 class="sec">一起<em>補地圖</em></h2>
+    <p class="fb-lead">資料沒填到、位置不對、店家搬走或想推薦新店？留下一句話，我們會定期整理更新。</p>
+    <form class="fb-card" id="fbform" autocomplete="off">
+      <div class="fb-row">
+        <label>回饋類型
+          <input id="fb-type" class="cbi" readonly value="補充資料" aria-label="回饋類型">
+        </label>
+        <label>哪一間店
+          <input id="fb-shop" class="cbi" autocomplete="off" placeholder="選擇店名，或自己輸入新店名" maxlength="60" required>
+          
+        </label>
+      </div>
+      <label>內容
+        <textarea id="fb-text" rows="4" maxlength="500" placeholder="例如：平日營業到 21:00、地址改成…、這家已經搬到…" required></textarea>
+      </label>
+      <label>聯絡方式（選填）
+        <input id="fb-contact" maxlength="80" placeholder="若需要我們回覆，可留下 Email 或 IG">
+      </label>
+      <div class="fb-act"><button class="btn" type="submit" id="fb-send">送出回饋</button><span id="fb-msg" role="status" aria-live="polite"></span></div>
+    </form>
+  </div>
+</div>
+
+<footer class="band foot">
+  <div class="wrap">
+    <h2 class="sec">逛完記得<em>回來</em>看看！</h2>
+    <div class="foot-grid">
+      <div><h3>地點</h3><p>國立臺北教育大學<br>台北市大安區和平東路二段134號</p></div>
+      <div><h3>關於這張地圖</h3><p>街道依 Google 地圖繪製，店家位置為大略位置。</p></div>
+      <div><h3>資料提醒</h3><p>價位、營業時間可能變動，出門前請再用 Google 地圖確認。</p></div>
+    </div>
+  </div>
+</footer>
+<script src="js/common.js"></script>
+<script src="js/data.js"></script>
+<script src="js/backend.js"></script>
+<script src="js/rank.js"></script>
+<script src="js/anim.js"></script>
+</body>
+</html>
